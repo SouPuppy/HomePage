@@ -1,0 +1,40 @@
+{
+  "hash": "f05470c1",
+  "configHash": "35c95ea3",
+  "lockfileHash": "00a2bf67",
+  "browserHash": "f7d802fc",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/.pnpm/react@19.1.1/node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "acd33265",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/.pnpm/react@19.1.1/node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "91c8c70b",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/.pnpm/react-dom@19.1.1_react@19.1.1/node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "1dc1e6c5",
+      "needsInterop": true
+    },
+    "@mui/material": {
+      "src": "../../node_modules/.pnpm/@mui+material@7.2.0_@types+react@19.1.9_react-dom@19.1.1_react@19.1.1__react@19.1.1/node_modules/@mui/material/esm/index.js",
+      "file": "@mui_material.js",
+      "fileHash": "7bd13006",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-PUMH2RNG": {
+      "file": "chunk-PUMH2RNG.js"
+    },
+    "chunk-SIAFITXM": {
+      "file": "chunk-SIAFITXM.js"
+    }
+  }
+}
