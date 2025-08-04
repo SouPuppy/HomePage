@@ -3,9 +3,11 @@
 // import viteLogo from '/vite.svg'
 // import './App.css'
 import ProfileCard from './components/ProfileCard'
+import ButtonUsage from './components/ButtonUsage'
 
 function App() {
   return (<>
+    <ButtonUsage />
     <ProfileCard />
   </>)
 }
