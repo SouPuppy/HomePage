@@ -16,7 +16,7 @@ import {
 
 // Drawer configuration
 const fullWidth = 220
-const collapsedWidth = 10
+const collapsedWidth = 12
 const hoverExpandWidth = 24
 const buttonSize = 24
 const buttonTop = 69
