@@ -12,7 +12,7 @@ const NavBar: React.FC = () => {
         alignItems: "center",
         justifyContent: "space-between",
         padding: "0 16px",
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+        boxShadow: "0 2px 2px rgba(0, 0, 0, 0.05)",
         position: "fixed",
         top: 0,
         zIndex: 1000,
