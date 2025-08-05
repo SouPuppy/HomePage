@@ -177,17 +177,17 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
       </Box>
 
       {/* Main content area (animated width + margin) */}
-{/* Main content area */}
-<Box
-  component="main"
-  sx={{
-    pl: `${drawerWidth}px`,
-    pt: 4,
-    transition: `padding-left ${transitionTiming}`,
-  }}
->
-  {children}
-</Box>
+      {/* Main content area */}
+      <Box
+        component="main"
+        sx={{
+          pl: `${drawerWidth}px`,
+          pt: 4,
+          transition: `padding-left ${transitionTiming}`,
+        }}
+      >
+        {children}
+      </Box>
     </Box>
   )
 }

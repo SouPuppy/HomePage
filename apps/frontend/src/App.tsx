@@ -1,5 +1,7 @@
 import NavBar from './components/NavBar'
 import SideNavLayout from './components/SideNavLayout'
+import CVPage from './pages/CV'
+import Center from './components/Center'
 
 export default function App() {
   return (
@@ -7,8 +9,11 @@ export default function App() {
       <NavBar/>
         <SideNavLayout>
         <div style={{ padding: '20px' }}>
-          <h1>Welcome to the App</h1>
-          <p>This is the main content area.</p>
+          <Center>
+            <CVPage />
+          </Center>
+          {/* <h1>Welcome to the App</h1>
+          <p>This is the main content area.</p> */}
         </div>
       </SideNavLayout>
     </div>
