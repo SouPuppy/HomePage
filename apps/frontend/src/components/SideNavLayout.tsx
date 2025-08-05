@@ -87,7 +87,7 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
                 justifyContent: 'center',
                 transition: 'all 0.2s ease',
                 '&:hover': {
-                  backgroundColor: '#e9e9e9ff',
+                  backgroundColor: '#edededff',
                 },
                 '&.Mui-selected': {
                   backgroundColor: collapsed ? 'rgba(224,224,255,0)' : '#e5e5e5ff',
