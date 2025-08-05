@@ -1,28 +1,25 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {
   Box,
   Drawer,
   List,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
   IconButton,
   Tooltip,
   CssBaseline,
 } from '@mui/material'
 import {
-  Home,
-  Work,
   ChevronRight,
   ChevronLeft,
 } from '@mui/icons-material'
 
 // Drawer configuration
-const fullWidth = 240
-const collapsedWidth = 14
+const fullWidth = 220
+const collapsedWidth = 10
 const hoverExpandWidth = 24
 const buttonSize = 24
-const buttonTop = 39
+const buttonTop = 69
 const transitionTiming = '0.2s cubic-bezier(0.4, 0, 0.2, 1)'
 
 type SideNavLayoutProps = {
@@ -60,7 +57,8 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
             transition: `width ${transitionTiming}, background-color ${transitionTiming}`,
             overflowX: 'hidden',
             boxSizing: 'border-box',
-            backgroundColor: collapsed ? '#e0e0e0ff' : '#fff',
+            backgroundColor: collapsed ? 'rgba(224, 224, 224, 0.5)' : 'rgba(224, 224, 224, 0.12)',
+            backdropFilter: 'blur(1px)',
             borderRight: 'none',
             position: 'fixed',
             top: 0,
@@ -70,73 +68,55 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
           },
         }}
       >
-        {/* Right edge indicator line */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            right: 0,
-            width: 2,
-            backgroundColor: hoveringButton ? '#4C64E2' : 'transparent',
-            transition: 'background-color 0.2s',
-            zIndex: 1200,
-          }}
-        />
+        
+        {/* Logo Area */}
 
-        {/* Drawer menu items */}
-        <List sx={{ mt: 2 }}>
+        <List sx={{ mt: 7 }}>
           {[
-            { icon: <Home />, label: 'My Apps', selected: true },
-            { icon: <Work />, label: 'Work', selected: false },
-          ].map(({ icon, label, selected }) => (
+            { label: 'HOME', selected: true },
+            { label: 'WORK', selected: false },
+          ].map(({ label, selected }) => (
             <ListItemButton
               key={label}
               selected={selected}
               sx={{
-                borderRadius: 2,
-                mx: 1,
-                my: 0.5,
+                my: 0.1,
                 px: 2,
-                py: 1,
+                py: 0,
+                minHeight: 32,
+                justifyContent: 'center',
                 transition: 'all 0.2s ease',
                 '&:hover': {
-                  backgroundColor: '#f5f5f5',
+                  backgroundColor: '#e9e9e9ff',
                 },
                 '&.Mui-selected': {
-                  backgroundColor: collapsed ? 'rgba(224,224,255,0)' : '#e0e0ff',
+                  backgroundColor: collapsed ? 'rgba(224,224,255,0)' : '#e5e5e5ff',
                   fontWeight: 'bold',
                   transition: `background-color ${transitionTiming}`,
                   '&:hover': {
                     backgroundColor: collapsed
-                      ? 'rgba(208,208,255,0.08)'
-                      : '#d0d0ff',
+                      ? 'rgba(243, 243, 243, 0.08)'
+                      : '#e0e0e0ff',
                   },
                 },
               }}
             >
-              <ListItemIcon
-                sx={{
-                  color: selected ? '#4C64E2' : 'inherit',
-                  transition: `color ${transitionTiming}`,
-                }}
-              >
-                {icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={label}
-                sx={{
-                  transition: `opacity ${transitionTiming}, width ${transitionTiming}, margin ${transitionTiming}`,
-                  opacity: collapsed ? 0 : 1,
-                  width: collapsed ? 0 : 'auto',
-                  marginLeft: collapsed ? 0 : 1,
-                  overflow: 'hidden',
-                  whiteSpace: 'nowrap',
-                }}
-              />
-            </ListItemButton>
-          ))}
+        <ListItemText
+          primary={label}
+          sx={{
+            textAlign: 'left',
+            transition: `opacity ${transitionTiming}, width ${transitionTiming}, margin ${transitionTiming}`,
+            opacity: collapsed ? 0 : 1,
+            width: collapsed ? 0 : 'auto',
+            marginLeft: collapsed ? 0 : 1,
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+          }}
+        />
+      </ListItemButton>
+    ))}
         </List>
+
       </Drawer>
 
       {/* Transparent clickable hover area (extends button area) */}
@@ -182,12 +162,12 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
               width: buttonSize,
               height: buttonSize,
               borderRadius: '50%',
-              backgroundColor: hoveringButton ? '#4C64E2' : '#fff',
-              color: hoveringButton ? '#fff' : '#4C64E2',
-              boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+              backgroundColor: hoveringButton ? '#5581dfff' : '#fff',
+              color: hoveringButton ? '#fff' : '#5581dfff',
+              boxShadow: '0.5px 0.5px 2px rgba(0,0,0,0.1)',
               transition: `background-color 0.2s ease`,
               '&:hover': {
-                backgroundColor: '#4C64E2',
+                backgroundColor: '#5581dfff',
               },
             }}
           >
@@ -197,17 +177,17 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
       </Box>
 
       {/* Main content area (animated width + margin) */}
-      <Box
-        component="main"
-        sx={{
-          p: 3,
-          ml: `${drawerWidth}px`,
-          width: `calc(100% - ${drawerWidth}px)`,
-          transition: `width ${transitionTiming}, margin-left ${transitionTiming}`,
-        }}
-      >
-        {children}
-      </Box>
+{/* Main content area */}
+<Box
+  component="main"
+  sx={{
+    pl: `${drawerWidth}px`,
+    pt: 4,
+    transition: `padding-left ${transitionTiming}`,
+  }}
+>
+  {children}
+</Box>
     </Box>
   )
 }

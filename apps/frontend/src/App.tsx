@@ -1,19 +1,16 @@
-// src/App.tsx
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from 'react-router-dom'
-import Home from './pages/Home'
-import AppPage from './pages/AppPage'
+import NavBar from './components/NavBar'
+import SideNavLayout from './components/SideNavLayout'
 
 export default function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/app" element={<AppPage />} />
-      </Routes>
-    </Router>
+    <div>
+      <NavBar/>
+        <SideNavLayout>
+        <div style={{ padding: '20px' }}>
+          <h1>Welcome to the App</h1>
+          <p>This is the main content area.</p>
+        </div>
+      </SideNavLayout>
+    </div>
   )
 }
