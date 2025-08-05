@@ -1,15 +1,19 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-import ProfileCard from './components/ProfileCard'
-import ButtonUsage from './components/ButtonUsage'
+import NavBar from './components/NavBar'
+import SideNavLayout from './components/SideNavLayout'
+import CVPage from './pages/CV'
+import Center from './components/Center'
 
-function App() {
-  return (<>
-    <ButtonUsage />
-    <ProfileCard />
-  </>)
+export default function App() {
+  return (
+    <div>
+      <NavBar/>
+        <SideNavLayout>
+          <Center>
+            <CVPage />
+          </Center>
+          {/* <h1>Welcome to the App</h1>
+          <p>This is the main content area.</p> */}
+      </SideNavLayout>
+    </div>
+  )
 }
-
-export default App
