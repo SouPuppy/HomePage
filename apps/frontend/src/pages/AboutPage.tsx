@@ -2,11 +2,11 @@ import React from 'react'
 import { Github } from 'lucide-react' // ✅ 引入 Lucide GitHub 图标
 import Link from '@mui/material/Link';
 
-const CVPage: React.FC = () => {
+const AboutPage: React.FC = () => {
   return (
     <div style={{ display: 'flex', marginTop: '20px' }}>
       {/* Sidebar */}
-      <aside style={{ width: '240px', paddingTop: '28px', paddingLeft: '64px', minHeight: '100vh', boxSizing: 'border-box' }}>
+      <aside style={{ width: '220px', paddingTop: '28px', paddingLeft: '60px', boxSizing: 'border-box' }}>
         {/* 头像圆形框 */}
         <div
           style={{
@@ -34,7 +34,7 @@ const CVPage: React.FC = () => {
 
         {/* 名字与简介 */}
         <h3 style={{ marginTop: '20px', textAlign: 'center' }}>Soupup</h3>
-        <p style={{ textAlign: 'center' }}>What can I say?</p>
+        <p style={{ textAlign: 'center' }}>The finest yachtsman in the world don't know how to swim.</p>
 
         {/* 链接列表 */}
         <ul style={{ listStyle: 'none', padding: 0, lineHeight: '1.8em', marginTop: '16px', marginLeft: '15px' }}>
@@ -46,30 +46,28 @@ const CVPage: React.FC = () => {
 
       {/* Main Content */}
       <main style={{ paddingLeft: '120px', flex: 1, maxWidth: '800px' }}>
-        <h1 style={{ marginBottom: '24px', fontSize: '32px' }}>About</h1>
+        <h1 style={{ marginBottom: '24px', fontSize: '32px' }}>About Me</h1>
+        <p style={{
+          fontSize: '16px',
+          lineHeight: '1.8',
+          textAlign: 'justify',
+        }}>
+          <span style={{
+            fontSize: '30px',
+            fontFamily: 'cursive',
+            fontWeight: 600,
+            display: 'inline-block',
+            marginRight: '2px',
+          }}>
+            H
+          </span>
+          i, I am Soupup, a current CS student. I began programming with C in 2016, and I'm happy to share my point of view on this blog.
+        </p>
 
         <section>
           <h2>Education</h2>
           <ul>
-            <li>U.G, progressing</li>
-          </ul>
-        </section>
-
-        <section style={{ marginTop: '10px' }}>
-          <h2>Work experience</h2>
-          <ul>
-            <li>
-              Unemployment
-            </li>
-          </ul>
-        </section>
-
-        <section style={{ marginTop: '10px' }}>
-          <h2>Skills</h2>
-          <ul>
-            <li>Sleeping</li>
-            <li>Eating</li>
-            <li>Day dreaming</li>
+            <li>B.S. in University of Nottingham & City University of Hong Kong (Exchange) </li>
           </ul>
         </section>
       </main>
@@ -77,4 +75,4 @@ const CVPage: React.FC = () => {
   )
 }
 
-export default CVPage
+export default AboutPage

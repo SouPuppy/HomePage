@@ -9,10 +9,11 @@ const CenterInPaddedLayout: React.FC<Props> = ({ children, maxWidth = 1000 }) =>
   return (
     <div
       style={{
-        paddingTop: '20px',
+        paddingTop: '30px',
         display: 'flex',
         justifyContent: 'center',
         width: '100%',
+        height: '100%',
         boxSizing: 'border-box',
       }}
     >
