@@ -14,8 +14,8 @@ const CVPage: React.FC = () => {
             height: '180px',
             borderRadius: '50%',
             backgroundColor: '#f2f3f3',
-            border: '4px solid #fff',
-            boxShadow: '0 0 0 1px #ccc',
+            border: '1px solid #e2e2e2ff',
+            boxShadow: '0 0.5px 0.5px 0.5px #cccccc',
             overflow: 'hidden',
             margin: '0 auto',
           }}

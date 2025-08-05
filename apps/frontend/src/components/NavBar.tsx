@@ -7,7 +7,9 @@ const NavBar: React.FC = () => {
       style={{
         width: "100%",
         height: "60px",
-        backgroundColor: "#f8f9fa",
+        backgroundColor: "rgba(219, 225, 230, 0.2)",
+        backdropFilter: "blur(10px)",
+        WebkitBackdropFilter: "blur(10px)",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -16,6 +18,7 @@ const NavBar: React.FC = () => {
         position: "fixed",
         top: 0,
         zIndex: 1000,
+        borderBottom: "1px solid rgba(0,0,0,0.05)",
       }}
     >
       {/* 左边 Logo */}

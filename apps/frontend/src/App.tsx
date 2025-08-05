@@ -8,13 +8,11 @@ export default function App() {
     <div>
       <NavBar/>
         <SideNavLayout>
-        <div style={{ padding: '20px' }}>
           <Center>
             <CVPage />
           </Center>
           {/* <h1>Welcome to the App</h1>
           <p>This is the main content area.</p> */}
-        </div>
       </SideNavLayout>
     </div>
   )

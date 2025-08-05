@@ -44,7 +44,7 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
   const buttonLeft = paperWidth - buttonSize / 2
 
   return (
-    <Box sx={{ display: 'block', minHeight: '100vh', backgroundColor: '#f4f4f4' }}>
+    <Box sx={{ display: 'block', minHeight: '100vh' }}>
       <CssBaseline />
 
       {/* Permanent Drawer */}
