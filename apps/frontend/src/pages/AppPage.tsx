@@ -1,10 +1,8 @@
 // src/pages/AppPage.tsx
-import SideNavLayout from "../components/SideNavLayout"
+import AppWorkspacePage from "../components/AppWorkspacePage"
 
 export default function AppPage() {
   return (
-    <SideNavLayout>
-      <h1>App Page</h1>
-    </SideNavLayout>
+    <AppWorkspacePage/>
   )
 }

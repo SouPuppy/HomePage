@@ -1,6 +1,8 @@
 /* index.css */
 body {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  /* NOTE - This mught not be right */
+  /* overflow: hidden; */
 }
 
 /* :root {

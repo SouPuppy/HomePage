@@ -13,13 +13,14 @@ import {
   ChevronRight,
   ChevronLeft,
 } from '@mui/icons-material'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 // Drawer configuration
 const fullWidth = 220
 const collapsedWidth = 12
 const hoverExpandWidth = 24
 const buttonSize = 24
-const buttonTop = 69
+const buttonTop = 95.5
 const transitionTiming = '0.2s cubic-bezier(0.4, 0, 0.2, 1)'
 
 type SideNavLayoutProps = {
@@ -29,6 +30,8 @@ type SideNavLayoutProps = {
 const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(true)
   const [hoveringButton, setHoveringButton] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const toggleCollapse = () => setCollapsed(!collapsed)
 
@@ -42,6 +45,14 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
 
   // Button position logic
   const buttonLeft = paperWidth - buttonSize / 2
+
+  // Navigation items
+  const navItems = [
+    { label: 'HOME', path: '/' },
+    { label: 'PROJECTS', path: '/projects' },
+    { label: 'APP', path: '/app' },
+    { label: 'ABOUT ME', path: '/about' },
+  ]
 
   return (
     <Box sx={{ display: 'block', minHeight: '100vh' }}>
@@ -68,58 +79,79 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
           },
         }}
       >
-        
         {/* Logo Area */}
 
-        <List sx={{ mt: 7 }}>
-          {[
-            { label: 'HOME', selected: true },
-            { label: 'WORK', selected: false },
-          ].map(({ label, selected }) => (
-            <ListItemButton
-              key={label}
-              selected={selected}
-              sx={{
-                my: 0.1,
-                px: 2,
-                py: 0,
-                minHeight: 32,
-                justifyContent: 'center',
-                transition: 'all 0.2s ease',
-                '&:hover': {
-                  backgroundColor: '#edededff',
-                },
-                '&.Mui-selected': {
-                  backgroundColor: collapsed ? 'rgba(224,224,255,0)' : '#e5e5e5ff',
-                  fontWeight: 'bold',
-                  transition: `background-color ${transitionTiming}`,
+        <List sx={{ mt: 6.5 }}>
+          {navItems.map(({ label, path }) => {
+            const selected = location.pathname === path
+            return (
+              <ListItemButton
+                key={label}
+                selected={selected}
+                onClick={() => navigate(path)}
+                sx={{
+                  my: 0,
+                  px: 2,
+                  py: 0,
+                  minHeight: 32,
+                  justifyContent: 'center',
+                  transition: 'all 0.2s ease',
                   '&:hover': {
-                    backgroundColor: collapsed
-                      ? 'rgba(243, 243, 243, 0.08)'
-                      : '#e0e0e0ff',
+                    backgroundColor: '#f0f0f0ff',
                   },
-                },
-              }}
-            >
-        <ListItemText
-          primary={label}
-          sx={{
-            textAlign: 'left',
-            transition: `opacity ${transitionTiming}, width ${transitionTiming}, margin ${transitionTiming}`,
-            opacity: collapsed ? 0 : 1,
-            width: collapsed ? 0 : 'auto',
-            marginLeft: collapsed ? 0 : 1,
-            overflow: 'hidden',
-            whiteSpace: 'nowrap',
-          }}
-        />
-      </ListItemButton>
-    ))}
+                  '&.Mui-selected': {
+                    backgroundColor: collapsed ? 'rgba(224,224,255,0)' : '#e5e5e5ff',
+                    fontWeight: 'bold',
+                    transition: `background-color ${transitionTiming}`,
+                    '&:hover': {
+                      backgroundColor: collapsed
+                        ? 'rgba(243, 243, 243, 0.08)'
+                        : '#e0e0e0ff',
+                    },
+                  },
+                }}
+              >
+                <ListItemText
+                  primary={label}
+                  sx={{
+                    textAlign: 'left',
+                    transition: `opacity ${transitionTiming}, width ${transitionTiming}, margin ${transitionTiming}`,
+                    opacity: collapsed ? 0 : 1,
+                    width: collapsed ? 0 : 'auto',
+                    marginLeft: collapsed ? 0 : 1,
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
+                  }}
+                />
+              </ListItemButton>
+            )
+          })}
         </List>
+
+        {/* Footer Area */}
+        <Box
+        sx={{
+          position: 'absolute',
+          bottom: 16,
+          left: 0,
+          right: 0,
+          px: 2,
+          opacity: collapsed ? 0 : 1,
+          transform: collapsed ? 'translateY(10px)' : 'translateY(0)',
+          transition: `opacity ${transitionTiming}, transform ${transitionTiming}`,
+          fontSize: '12px',
+          color: '#888',
+          textAlign: 'center',
+          userSelect: 'none',
+        }}
+      >
+        © {new Date().getFullYear()} Soupup <br/>
+        All rights reserved
+      </Box>
 
       </Drawer>
 
-      {/* Transparent clickable hover area (extends button area) */}
+      {/* Transparent clickable hover area */}
       {collapsed && (
         <Box
           onMouseEnter={() => setHoveringButton(true)}
@@ -137,7 +169,7 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
         />
       )}
 
-      {/* Control button (visually shown) */}
+      {/* Control button */}
       <Box
         onMouseEnter={() => setHoveringButton(true)}
         onMouseLeave={() => setHoveringButton(false)}
@@ -176,8 +208,7 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
         </Tooltip>
       </Box>
 
-      {/* Main content area (animated width + margin) */}
-      {/* Main content area */}
+      {/* Main content */}
       <Box
         component="main"
         sx={{

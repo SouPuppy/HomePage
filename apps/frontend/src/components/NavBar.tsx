@@ -27,7 +27,7 @@ const NavBar: React.FC = () => {
       </div>
 
       {/* 中间 SearchBox，始终居中 */}
-      <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
+      <div style={{ flex: 1, display: "flex", justifyContent: "center", paddingLeft: 45 }}>
         <SearchBox />
       </div>
 
