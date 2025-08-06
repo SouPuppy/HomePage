@@ -1,12 +1,12 @@
 import React from 'react'
-import { Github } from 'lucide-react' // ✅ 引入 Lucide GitHub 图标
+import { Github, Mail } from 'lucide-react'
 import Link from '@mui/material/Link';
 
 const AboutPage: React.FC = () => {
   return (
     <div style={{ display: 'flex', marginTop: '20px' }}>
       {/* Sidebar */}
-      <aside style={{ width: '220px', paddingTop: '28px', paddingLeft: '60px', boxSizing: 'border-box' }}>
+      <aside style={{ width: '220px', paddingTop: '28px', paddingLeft: '0px', boxSizing: 'border-box' }}>
         {/* 头像圆形框 */}
         <div
           style={{
@@ -37,9 +37,47 @@ const AboutPage: React.FC = () => {
         <p style={{ textAlign: 'center' }}>The finest yachtsman in the world don't know how to swim.</p>
 
         {/* 链接列表 */}
-        <ul style={{ listStyle: 'none', padding: 0, lineHeight: '1.8em', marginTop: '16px', marginLeft: '15px' }}>
+        <ul
+          style={{
+            listStyle: 'none',
+            padding: 0,
+            lineHeight: '1.8em',
+            marginTop: '16px',
+            marginLeft: '15px',
+          }}
+        >
           <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Github size={16} /> <Link href="#"> GitHub</Link>
+            <Github size={16} />
+            <Link
+              href="https://github.com/SouPuppy/"
+              underline="none"
+              sx={{
+                color: 'inherit',
+                textDecoration: 'none',
+                '&:hover': {
+                  textDecoration: 'underline',
+                },
+              }}
+            >
+              GitHub
+            </Link>
+          </li>
+
+          <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Mail size={16} />
+            <Link
+              href="mailto:wdk1745@gmail.com"
+              underline="none"
+              sx={{
+                color: 'inherit',
+                textDecoration: 'none',
+                '&:hover': {
+                  textDecoration: 'underline',
+                },
+              }}
+            >
+              E-mail
+            </Link>
           </li>
         </ul>
       </aside>
@@ -67,7 +105,7 @@ const AboutPage: React.FC = () => {
         <section>
           <h2>Education</h2>
           <ul>
-            <li>B.S. in University of Nottingham & City University of Hong Kong (Exchange) </li>
+            <li>B.S. in University of Nottingham & City University of Hong Kong</li>
           </ul>
         </section>
       </main>
