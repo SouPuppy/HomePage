@@ -3,39 +3,24 @@ import { Typography } from '@mui/material';
 
 const projects = [
   {
-    name: 'Express-Language',
-    description: 'A declarative language designed for structured text transformation.',
-    languages: ['TeX', 'TypeScript'],
-    link: 'https://github.com/SouPuppy/Express-Language',
-  },  {
-    name: 'Express-Language',
-    description: 'A declarative language designed for structured text transformation.',
-    languages: ['TeX', 'TypeScript'],
-    link: 'https://github.com/SouPuppy/Express-Language',
-  },  {
-    name: 'Express-Language',
-    description: 'A declarative language designed for structured text transformation.',
-    languages: ['TeX', 'TypeScript'],
-    link: 'https://github.com/SouPuppy/Express-Language',
-  },  {
-    name: 'Express-Language',
-    description: 'A declarative language designed for structured text transformation.',
-    languages: ['TeX', 'TypeScript'],
-    link: 'https://github.com/SouPuppy/Express-Language',
-  },
+    name: 'Arch-Lang',
+    description: 'Arch is a self-consistent, modular programming language using type theory.',
+    link: 'https://github.com/SouPuppy/Arch',
+  }
 ]
 
 const ProjectPage: React.FC = () => {
   return (
     <>
-      <Typography variant="h4" fontWeight="bold" gutterBottom sx={{paddingLeft: 5, marginTop: '20px'}}>
+      <Typography variant="h4" fontWeight="bold" gutterBottom sx={{paddingLeft: 5, marginTop: '40px'}}>
         Projects
       </Typography>
       <div
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-          gap: '16px',
+          rowGap: '58px',
+          columnGap: '28px',
           padding: '24px 40px',
         }}
       >

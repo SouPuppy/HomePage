@@ -5,7 +5,7 @@ type Props = {
   maxWidth?: number
 }
 
-const CenterInPaddedLayout: React.FC<Props> = ({ children, maxWidth = 1100 }) => {
+const CenterInPaddedLayout: React.FC<Props> = ({ children, maxWidth = 1150 }) => {
   return (
     <div
       style={{

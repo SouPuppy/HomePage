@@ -49,8 +49,8 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
   // Navigation items
   const navItems = [
     { label: 'HOME', path: '/' },
+    { label: 'BLOGS', path: '/blog' },
     { label: 'PROJECTS', path: '/projects' },
-    { label: 'APP', path: '/app' },
     { label: 'ABOUT ME', path: '/about' },
   ]
 
@@ -79,7 +79,6 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
           },
         }}
       >
-        {/* Logo Area */}
 
         <List sx={{ mt: 6.5 }}>
           {navItems.map(({ label, path }) => {
@@ -111,18 +110,18 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
                   },
                 }}
               >
-                <ListItemText
-                  primary={label}
-                  sx={{
-                    textAlign: 'left',
-                    transition: `opacity ${transitionTiming}, width ${transitionTiming}, margin ${transitionTiming}`,
-                    opacity: collapsed ? 0 : 1,
-                    width: collapsed ? 0 : 'auto',
-                    marginLeft: collapsed ? 0 : 1,
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap',
-                  }}
-                />
+              <ListItemText
+                primary={label}
+                sx={{
+                  textAlign: 'center',
+                  width: '100%',
+                  transition: `opacity ${transitionTiming}, width ${transitionTiming}, margin ${transitionTiming}`,
+                  opacity: collapsed ? 0 : 1,
+                  marginLeft: collapsed ? 0 : 1,
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                }}
+              />
               </ListItemButton>
             )
           })}

@@ -4,7 +4,6 @@ import React from 'react'
 interface ProjectCardProps {
   name: string
   description: string
-  languages: string[]
   link: string
 }
 
@@ -17,14 +16,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ name, description, link }) =>
         border: '1px solid #e1e4e8',
         borderRadius: '1px',
         paddingTop: '15px',
-        paddingLeft: '20px',
-        paddingBottom: '15px',
+        paddingLeft: '18px',
+        paddingRight: '10px',
         display: 'flex',
         flexDirection: 'column',
-        gap: '8px',
+        gap: '4px',
         transition: 'box-shadow 0.2s ease-in-out',
-        width: '320px',
-        height: '110px'
+        width: '345px',
+        height: '105px'
       }}
       onMouseOver={(e) => {
         (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 3px rgba(0,0,0,0.1)'
@@ -56,10 +55,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ name, description, link }) =>
       <div
         style={{
           fontSize: '16px',
-          fontWeight: 500,
+          fontWeight: 300,
           color: '#57606a',
           whiteSpace: 'pre-wrap',
+          wordBreak: 'break-word',
+          hyphens: 'auto',
+          lineBreak: 'strict'
         }}
+        lang="en"
       >
         {description}
       </div>

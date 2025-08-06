@@ -83,8 +83,8 @@ const AboutPage: React.FC = () => {
       </aside>
 
       {/* Main Content */}
-      <main style={{ paddingLeft: '120px', flex: 1, maxWidth: '800px' }}>
-        <h1 style={{ marginBottom: '24px', fontSize: '32px' }}>About Me</h1>
+      <main style={{ paddingLeft: '120px', flex: 1, maxWidth: '800px', fontWeight: 300 }}>
+        <h1 style={{ marginBottom: '24px', fontSize: '32px'}}>About Me</h1>
         <p style={{
           fontSize: '16px',
           lineHeight: '1.8',
