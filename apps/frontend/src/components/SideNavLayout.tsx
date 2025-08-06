@@ -20,7 +20,7 @@ const fullWidth = 220
 const collapsedWidth = 12
 const hoverExpandWidth = 24
 const buttonSize = 24
-const buttonTop = 95.5
+const buttonTop = 156
 const transitionTiming = '0.2s cubic-bezier(0.4, 0, 0.2, 1)'
 
 type SideNavLayoutProps = {
@@ -80,7 +80,7 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
         }}
       >
 
-        <List sx={{ mt: 6.5 }}>
+        <List sx={{ mt: 10 }}>
           {navItems.map(({ label, path }) => {
             const selected = location.pathname === path
             return (
@@ -113,6 +113,7 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
               <ListItemText
                 primary={label}
                 sx={{
+                  color: '#363636ff',
                   textAlign: 'center',
                   width: '100%',
                   transition: `opacity ${transitionTiming}, width ${transitionTiming}, margin ${transitionTiming}`,
