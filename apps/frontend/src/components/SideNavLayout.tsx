@@ -20,7 +20,7 @@ const fullWidth = 220
 const collapsedWidth = 12
 const hoverExpandWidth = 24
 const buttonSize = 24
-const buttonTop = 95.5
+const buttonTop = 156
 const transitionTiming = '0.2s cubic-bezier(0.4, 0, 0.2, 1)'
 
 type SideNavLayoutProps = {
@@ -49,8 +49,8 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
   // Navigation items
   const navItems = [
     { label: 'HOME', path: '/' },
+    { label: 'BLOGS', path: '/blog' },
     { label: 'PROJECTS', path: '/projects' },
-    { label: 'APP', path: '/app' },
     { label: 'ABOUT ME', path: '/about' },
   ]
 
@@ -79,9 +79,8 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
           },
         }}
       >
-        {/* Logo Area */}
 
-        <List sx={{ mt: 6.5 }}>
+        <List sx={{ mt: 10 }}>
           {navItems.map(({ label, path }) => {
             const selected = location.pathname === path
             return (
@@ -111,18 +110,19 @@ const SideNavLayout: React.FC<SideNavLayoutProps> = ({ children }) => {
                   },
                 }}
               >
-                <ListItemText
-                  primary={label}
-                  sx={{
-                    textAlign: 'left',
-                    transition: `opacity ${transitionTiming}, width ${transitionTiming}, margin ${transitionTiming}`,
-                    opacity: collapsed ? 0 : 1,
-                    width: collapsed ? 0 : 'auto',
-                    marginLeft: collapsed ? 0 : 1,
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap',
-                  }}
-                />
+              <ListItemText
+                primary={label}
+                sx={{
+                  color: '#363636ff',
+                  textAlign: 'center',
+                  width: '100%',
+                  transition: `opacity ${transitionTiming}, width ${transitionTiming}, margin ${transitionTiming}`,
+                  opacity: collapsed ? 0 : 1,
+                  marginLeft: collapsed ? 0 : 1,
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                }}
+              />
               </ListItemButton>
             )
           })}

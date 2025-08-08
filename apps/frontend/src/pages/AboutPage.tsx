@@ -1,12 +1,23 @@
 import React from 'react'
 import { Github, Mail } from 'lucide-react'
-import Link from '@mui/material/Link';
+import Link from '@mui/material/Link'
 
 const AboutPage: React.FC = () => {
   return (
-    <div style={{ display: 'flex', marginTop: '20px' }}>
+    <div
+      style={{
+        width: '100%',
+        maxWidth: '1150px',
+        margin: '40px auto 0',
+        display: 'flex',
+        alignItems: 'flex-start',
+        gap: '60px',
+        boxSizing: 'border-box',
+        padding: '0 40px',
+      }}
+    >
       {/* Sidebar */}
-      <aside style={{ width: '220px', paddingTop: '28px', paddingLeft: '0px', boxSizing: 'border-box' }}>
+      <aside style={{ width: '220px', flexShrink: 0 }}>
         {/* 头像圆形框 */}
         <div
           style={{
@@ -34,7 +45,9 @@ const AboutPage: React.FC = () => {
 
         {/* 名字与简介 */}
         <h3 style={{ marginTop: '20px', textAlign: 'center' }}>Soupup</h3>
-        <p style={{ textAlign: 'center' }}>The finest yachtsman in the world don't know how to swim.</p>
+        <p style={{ textAlign: 'center' }}>
+          The finest yachtsman in the world don't know how to swim.
+        </p>
 
         {/* 链接列表 */}
         <ul
@@ -83,29 +96,36 @@ const AboutPage: React.FC = () => {
       </aside>
 
       {/* Main Content */}
-      <main style={{ paddingLeft: '120px', flex: 1, maxWidth: '800px' }}>
+      <main style={{ flex: 1, maxWidth: '800px', fontWeight: 300 }}>
         <h1 style={{ marginBottom: '24px', fontSize: '32px' }}>About Me</h1>
-        <p style={{
-          fontSize: '16px',
-          lineHeight: '1.8',
-          textAlign: 'justify',
-        }}>
-          <span style={{
-            fontSize: '30px',
-            fontFamily: 'cursive',
-            fontWeight: 600,
-            display: 'inline-block',
-            marginRight: '2px',
-          }}>
+        <p
+          style={{
+            fontSize: '16px',
+            lineHeight: '1.8',
+            textAlign: 'justify',
+          }}
+        >
+          <span
+            style={{
+              fontSize: '30px',
+              fontFamily: 'cursive',
+              fontWeight: 600,
+              display: 'inline-block',
+              marginRight: '2px',
+            }}
+          >
             H
           </span>
-          i, I am Soupup, a current CS student. I began programming with C in 2016, and I'm happy to share my point of view on this blog.
+          i, I am Soupup, a current CS student. I began programming with C in
+          2016, and I'm happy to share my point of view on this blog.
         </p>
 
         <section>
           <h2>Education</h2>
           <ul>
-            <li>B.S. in University of Nottingham & City University of Hong Kong</li>
+            <li>
+              B.S. in University of Nottingham & City University of Hong Kong
+            </li>
           </ul>
         </section>
       </main>

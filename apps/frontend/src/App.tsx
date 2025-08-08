@@ -5,7 +5,10 @@ import SideNavLayout from './components/SideNavLayout'
 import AboutPage from './pages/AboutPage'
 import HomePage from './pages/HomePage'
 import ProjectsPage from './pages/ProjectPage'
-import AppPage from './pages/AppPage'
+
+import BlogPage from './pages/BlogPage'
+import BlogDetailPage from './pages/BlogDetailPage'
+import BlogEditPage from './pages/BlogEditPage'
 
 function App() {
   return (
@@ -16,7 +19,10 @@ function App() {
             <Routes>
               <Route path="/" element={<><HomePage /></>} />
               <Route path="/projects" element={<Center><ProjectsPage /></Center>} />
-              <Route path="/app" element={<Center><AppPage /></Center>} />
+              <Route path="/blog" element={<Center><BlogPage /></Center>} />
+              <Route path="/blog/:id" element={<Center><BlogDetailPage /></Center>} />
+              <Route path="/blog/new" element={<BlogEditPage />} />
+              <Route path="/blog/:id/edit" element={<BlogEditPage />} />
               <Route path="/about" element={<Center><AboutPage /></Center>} />
             </Routes>
         </SideNavLayout>
