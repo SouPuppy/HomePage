@@ -1,37 +1,49 @@
+// src/pages/BlogDetailPage.tsx
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
+import rehypeHighlight from 'rehype-highlight'
+import rehypeRaw from 'rehype-raw'
 import rehypeKatex from 'rehype-katex'
-// import 'katex/dist/katex.min.css'
 
-type Post = {
+import 'katex/dist/katex.min.css'
+import 'highlight.js/styles/github.css'
+import './markdown.css'
+
+interface BlogPost {
+  id: string
   title: string
-  content: string
   createdAt: string
+  content: string
 }
 
 const BlogDetailPage = () => {
-  const { id } = useParams()
-  const [post, setPost] = useState<Post | null>(null)
+  const { id } = useParams<{ id: string }>()
+  const [post, setPost] = useState<BlogPost | null>(null)
 
   useEffect(() => {
-    fetch(`/api/posts/${id}`)
+    fetch(`http://localhost:8080/blog/${id}`)
       .then(res => res.json())
       .then(data => setPost(data))
+      .catch(err => console.error('加载失败', err))
   }, [id])
 
-  if (!post) return <p>加载中...</p>
+  if (!post) return <div style={{ padding: '2rem' }}>正在加载文章内容...</div>
 
   return (
-    <div style={{ padding: '32px', maxWidth: '800px', margin: '0 auto' }}>
+    <div style={{ padding: '40px 20px', maxWidth: '800px', margin: 'auto' }}>
       <h1>{post.title}</h1>
-      <p style={{ color: '#888' }}>{post.createdAt.slice(0, 10)}</p>
-      <ReactMarkdown
-        children={post.content}
-        remarkPlugins={[remarkMath]}
-        rehypePlugins={[rehypeKatex]}
-      />
+      <p style={{ color: '#888', fontSize: '14px' }}>{new Date(post.createdAt).toLocaleString()}</p>
+
+      <div className="markdown-body" style={{ marginTop: '30px' }}>
+        <ReactMarkdown
+          children={post.content}
+          remarkPlugins={[remarkGfm, remarkMath]}
+          rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeKatex]}
+        />
+      </div>
     </div>
   )
 }

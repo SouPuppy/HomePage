@@ -9,110 +9,94 @@ type Post = {
   description?: string
   author?: string
   createdAt: string
-  views?: number
-  likes?: number
-  favorites?: number
 }
 
 const PostList = () => {
   const [posts, setPosts] = useState<Post[]>([])
+  const [loading, setLoading] = useState(true)
+  const [copiedId, setCopiedId] = useState<string | null>(null)
   const [page, setPage] = useState(0)
   const [hasMore, setHasMore] = useState(true)
-  const [isLoading, setIsLoading] = useState(false)
-  const [copiedPostId, setCopiedPostId] = useState<string | null>(null)
-
-  const loaderRef = useRef<HTMLDivElement | null>(null)
+  const observer = useRef<IntersectionObserver | null>(null)
+  const loadMoreRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!hasMore || isLoading) return
+    const fetchPosts = async () => {
+      setLoading(true)
+      try {
+        const res = await fetch(`http://localhost:8080/blog?page=${page}&size=5`)
+        if (!res.ok) throw new Error('Network response was not ok')
+        const data: Post[] = await res.json()
+        setPosts(prevPosts => {
+          // 在初次加载时清空 posts，防止重复数据
+          if (page === 0) return data
+          return [...prevPosts, ...data]
+        })
+        setHasMore(data.length > 0) // 如果返回的数据为空，表示没有更多数据
+      } catch (err) {
+        console.error('加载失败:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
 
-    setIsLoading(true)
-
-    fetch(`/api/posts?page=${page}&size=20`)
-      .then(res => res.json())
-      .then(data => {
-        setPosts(prev => [...prev, ...data.content])
-        setHasMore(page + 1 < data.totalPages)
-        setIsLoading(false)
-      })
+    fetchPosts()
   }, [page])
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        if (entries[0].isIntersecting && hasMore && !isLoading) {
-          setPage(p => p + 1)
+    if (loadMoreRef.current) {
+      observer.current = new IntersectionObserver((entries) => {
+        const entry = entries[0]
+        if (entry.isIntersecting && hasMore && !loading) {
+          setPage(prevPage => prevPage + 1)
         }
-      },
-      { threshold: 1 }
-    )
-    if (loaderRef.current) observer.observe(loaderRef.current)
-    return () => observer.disconnect()
-  }, [hasMore, isLoading])
+      })
+      observer.current.observe(loadMoreRef.current)
+    }
 
-  const handleCopy = (postId: string) => {
-    const url = `${window.location.origin}/blog/${postId}`
+    return () => {
+      if (observer.current && loadMoreRef.current) {
+        observer.current.unobserve(loadMoreRef.current)
+      }
+    }
+  }, [loading, hasMore])
+
+  const handleCopy = (id: string) => {
+    const url = `${window.location.origin}/blog/${id}`
     navigator.clipboard.writeText(url).then(() => {
-      setCopiedPostId(postId)
-      setTimeout(() => setCopiedPostId(null), 1000)
+      setCopiedId(id)
+      setTimeout(() => setCopiedId(null), 1000)
     })
   }
 
+  if (loading && page === 0) return <p style={{ textAlign: 'center', color: '#888' }}>加载中...</p>
+
   return (
-    <div style={{ paddingLeft: '0px', paddingRight: '2px', paddingTop: '0px' ,
-    width: '100%'}}>
+    <div style={{ padding: '0 2px' }}>
       {posts.map(post => (
-        <div
-          key={post.id}
-          style={{
-            padding: '5px 0px 10px 0px',
-            borderBottom: '1px solid #eaeaea',
-            marginBottom: '8px',
-          }}
-        >
+        <div key={post.id} style={{ borderBottom: '1px solid #eee', paddingBottom: 10, marginBottom: 10 }}>
           <Link to={`/blog/${post.id}`} style={{ textDecoration: 'none', color: '#222' }}>
             <h2 style={{ fontSize: '18px', fontWeight: 600 }}>{post.title}</h2>
           </Link>
-
-          <div style={{ fontSize: '14px', color: '#666', margin: '8px 0' }}>
+          <p style={{ fontSize: '14px', color: '#666' }}>
             {post.description ?? post.content.slice(0, 100)}...
-          </div>
-
-          <div
-            style={{
-              fontSize: '13px',
-              color: '#999',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: '#999' }}>
             <span>{post.createdAt.slice(0, 10)}</span>
-
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                cursor: 'pointer',
-              }}
+            <span
               onClick={() => handleCopy(post.id)}
+              style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', gap: '6px' }}
             >
-              <Share2 size={16} />
-              <span style={{ fontSize: '12px', color: '#999' }}>
-                {copiedPostId === post.id ? 'Coppied URL in clipboard' : 'Share'}
-              </span>
-            </div>
+              <Share2 size={14} />
+              {copiedId === post.id ? '已复制' : '分享'}
+            </span>
           </div>
         </div>
       ))}
 
-      {/* 触底加载触发器 */}
-      <div ref={loaderRef} style={{ height: 40 }} />
+      {loading && hasMore && <p style={{ textAlign: 'center', color: '#888' }}>加载更多...</p>}
 
-      {/* 可选加载提示 */}
-      {isLoading && <p style={{ textAlign: 'center', color: '#999' }}>加载中...</p>}
-      {!hasMore && <p style={{ textAlign: 'center', color: '#999' }}>已加载全部文章</p>}
+      <div ref={loadMoreRef} style={{ height: '20px', backgroundColor: 'transparent' }} />
     </div>
   )
 }

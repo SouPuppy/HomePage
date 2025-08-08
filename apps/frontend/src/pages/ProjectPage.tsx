@@ -5,6 +5,26 @@ const projects = [
     name: 'Arch-Lang',
     description: 'Arch is a self-consistent, modular programming language using type theory.',
     link: 'https://github.com/SouPuppy/Arch',
+  },  {
+    name: 'Arch-Lang',
+    description: 'Arch is a self-consistent, modular programming language using type theory.',
+    link: 'https://github.com/SouPuppy/Arch',
+  },  {
+    name: 'Arch-Lang',
+    description: 'Arch is a self-consistent, modular programming language using type theory.',
+    link: 'https://github.com/SouPuppy/Arch',
+  },  {
+    name: 'Arch-Lang',
+    description: 'Arch is a self-consistent, modular programming language using type theory.',
+    link: 'https://github.com/SouPuppy/Arch',
+  },  {
+    name: 'Arch-Lang',
+    description: 'Arch is a self-consistent, modular programming language using type theory.',
+    link: 'https://github.com/SouPuppy/Arch',
+  },  {
+    name: 'Arch-Lang',
+    description: 'Arch is a self-consistent, modular programming language using type theory.',
+    link: 'https://github.com/SouPuppy/Arch',
   },
 ]
 

@@ -8,6 +8,7 @@ import ProjectsPage from './pages/ProjectPage'
 
 import BlogPage from './pages/BlogPage'
 import BlogDetailPage from './pages/BlogDetailPage'
+import BlogEditPage from './pages/BlogEditPage'
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
               <Route path="/projects" element={<Center><ProjectsPage /></Center>} />
               <Route path="/blog" element={<Center><BlogPage /></Center>} />
               <Route path="/blog/:id" element={<Center><BlogDetailPage /></Center>} />
+              <Route path="/blog/new" element={<BlogEditPage />} />
+              <Route path="/blog/:id/edit" element={<BlogEditPage />} />
               <Route path="/about" element={<Center><AboutPage /></Center>} />
             </Routes>
         </SideNavLayout>
